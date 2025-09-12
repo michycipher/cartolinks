@@ -67,7 +67,7 @@ export default function Hero() {
     return slides[(currentSlide + 1) % slides.length];
   };
 
-  const CardComponent = ({ slide }) => (
+  const CardComponent = ({ slide }: { slide: typeof slides[number] }) => (
     <div className="relative rounded-xl overflow-hidden h-[500px] w-full">
       <img
         src={slide.image}
