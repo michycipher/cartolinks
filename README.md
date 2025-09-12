@@ -1,4 +1,4 @@
-# Cartolinks UI Clone 🚀
+# Cartolinks UI Clone
 
 Welcome to my **Cartolinks Pixel-Perfect UI Clone** repository! This project is a **high-fidelity, responsive, and interactive clone** of the Cartolinks platform, showcasing my frontend development expertise and attention to detail.  
 
@@ -6,7 +6,7 @@ I built this project with a focus on **performance, scalability, and modern web 
 
 ---
 
-## 🌟 Project Highlights
+## Project Highlights
 
 - **Pixel-perfect design**: Every component is carefully crafted to match the original Cartolinks UI.
 - **Responsive & mobile-first**: Fully functional across devices with a clean, fluid layout.
