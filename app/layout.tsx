@@ -2,8 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Krea Clone',
-  description: 'Pixel perfect UI clone of Krea AI',
+  title: 'Cartolinks',
+  description: 'Pixel perfect UI clone of Cartolinks',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
