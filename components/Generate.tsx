@@ -1,6 +1,7 @@
 import React from 'react';
-import { ExternalLink, Sparkles, Video, Mic, Image, Edit3, Users, Zap } from 'lucide-react';
+import { Sparkles, Video, Mic, Image, Edit3, Users, Zap } from 'lucide-react';
 import { IoVideocam } from "react-icons/io5";
+import { IoIosArrowDown } from 'react-icons/io';
 
 
 // Individual Tool Card Component
@@ -19,11 +20,11 @@ const ToolCard: React.FC<ToolCardProps> = ({
   description,
   badge,
   badgeColor = 'blue',
-  iconBg = '#697e91', // Default color
+  iconBg = '#697e91',
 }) => {
   const badgeColors = {
     blue: 'bg-blue-500 text-white',
-    green: 'bg-green-500 text-white',
+    green: 'bg-green-500 text-white', // sample colors
     purple: 'bg-purple-500 text-white',
     orange: 'bg-orange-500 text-white'
   };
@@ -144,10 +145,10 @@ const GeneratePage = () => {
     <div className="mx-auto p-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Generate</h1>
-        <button className="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Generate</h1>
+        <button className="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1 dark:text-white">
           Show all
-          <ExternalLink className="w-4 h-4" />
+          <IoIosArrowDown className="w-4 h-4" />
         </button>
       </div>
 

@@ -14,25 +14,22 @@ export default function Hero() {
       subtitle: "WAN 2.2 Image generation",
       description: "Generate complex images with the brand new and powerful WAN 2.2 model. Exceptional prompt adherence and ultra-realistic textures.",
       buttonText: "Try WAN 2.2",
-      label: "DIFFUSION MODEL"
     },
     {
       id: 2,
-      image: "/flux-bg.jpg",
+      image: "/vr.jpg",
       title: "Open Source",
       subtitle: "FLUX.1 Krea",
       description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.",
       buttonText: "Learn More",
-      label: "FLUX MODEL"
     },
     {
       id: 3,
-      image: "/wan-bg.jpg",
+      image: "/people.jpg",
       title: "FLUX 2.0",
       subtitle: "Advanced Generation",
       description: "Experience the next generation of AI image creation with enhanced quality and speed.",
       buttonText: "Try FLUX 2.0",
-      label: "ADVANCED MODEL"
     },
     {
       id: 4,
@@ -41,7 +38,6 @@ export default function Hero() {
       subtitle: "Professional Suite",
       description: "Access professional-grade tools for advanced image manipulation and generation workflows.",
       buttonText: "Get Pro",
-      label: "PRO TOOLS"
     },
     {
       id: 5,
@@ -50,7 +46,22 @@ export default function Hero() {
       subtitle: "Developer Tools",
       description: "Integrate our powerful AI models into your applications with our comprehensive API.",
       buttonText: "View Docs",
-      label: "DEVELOPER"
+    },
+ {
+      id: 6,
+      image: "/vr.jpg",
+      title: "Future Tech",
+      subtitle: "FLUX.2 Krea",
+      description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.",
+      buttonText: "Read More",
+    },
+    {
+      id: 7,
+      image: "/catalog_header.jpg",
+      title: "Green Tech",
+      subtitle: "Green Krea",
+      description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.",
+      buttonText: "Read More",
     }
   ];
 
@@ -68,18 +79,13 @@ export default function Hero() {
   };
 
   const CardComponent = ({ slide }: { slide: typeof slides[number] }) => (
-    <div className="relative rounded-xl overflow-hidden h-[500px] w-full">
+    <div className="relative rounded-xl overflow-hidden h-[600px] w-full">
       <img
         src={slide.image}
         alt={slide.title}
         className="absolute inset-0 w-full h-full object-center"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-
-      {/* Top left label */}
-      <div className="absolute top-4 left-4 text-white/70 text-xs font-medium tracking-wider uppercase">
-        {slide.label}
-      </div>
 
       {/* Centered title */}
       <h2 className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-white tracking-tight">
@@ -91,7 +97,7 @@ export default function Hero() {
         <h4 className="text-xl font-semibold mb-2">
           {slide.subtitle}
         </h4>
-        <p className="text-sm font-light leading-relaxed text-white/90">
+        <p className="text-xs font-light leading-relaxed text-white/90 w-[85%]">
           {slide.description}
         </p>
       </div>
