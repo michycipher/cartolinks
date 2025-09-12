@@ -139,7 +139,7 @@ export default function Hero() {
             }`}
           />
         ))}
-        {/* Additional inactive dots to match the original design */}
+    
         {[...Array(3)].map((_, index) => (
           <button
             key={index + slides.length}
