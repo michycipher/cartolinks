@@ -2,23 +2,87 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useSwipeable } from "react-swipeable";
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    { id: 1, image: "/wan-bg.jpg", title: "WAN 2.2", subtitle: "WAN 2.2 Image generation", description: "Generate complex images with the brand new and powerful WAN 2.2 model. Exceptional prompt adherence and ultra-realistic textures.", buttonText: "Try WAN 2.2" },
-    { id: 2, image: "/vr.jpg", title: "Open Source", subtitle: "FLUX.1 Krea", description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.", buttonText: "Learn More" },
-    { id: 3, image: "/people.jpg", title: "FLUX 2.0", subtitle: "Advanced Generation", description: "Experience the next generation of AI image creation with enhanced quality and speed.", buttonText: "Try FLUX 2.0" },
-    { id: 4, image: "/flux-bg.jpg", title: "Pro Tools", subtitle: "Professional Suite", description: "Access professional-grade tools for advanced image manipulation and generation workflows.", buttonText: "Get Pro" },
-    { id: 5, image: "/wan-bg.jpg", title: "API Access", subtitle: "Developer Tools", description: "Integrate our powerful AI models into your applications with our comprehensive API.", buttonText: "View Docs" },
-    { id: 6, image: "/vr.jpg", title: "Future Tech", subtitle: "FLUX.2 Krea", description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.", buttonText: "Read More" },
-    { id: 7, image: "/catalog_header.jpg", title: "Green Tech", subtitle: "Green Krea", description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.", buttonText: "Read More" }
+    {
+      id: 1,
+      image: "/wan-bg.jpg",
+      title: "WAN 2.2",
+      subtitle: "WAN 2.2 Image generation",
+      description: "Generate complex images with the brand new and powerful WAN 2.2 model. Exceptional prompt adherence and ultra-realistic textures.",
+      buttonText: "Try WAN 2.2"
+    },
+
+    {
+      id: 2,
+      image: "/vr.jpg",
+      title: "Open Source",
+      subtitle: "FLUX.1 Krea",
+      description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.",
+      buttonText: "Learn More"
+    },
+
+    {
+      id: 3,
+      image: "/people.jpg",
+      title: "FLUX 2.0",
+      subtitle: "Advanced Generation",
+      description: "Experience the next generation of AI image creation with enhanced quality and speed.",
+      buttonText: "Try FLUX 2.0"
+    },
+
+    {
+      id: 4,
+      image: "/flux-bg.jpg",
+      title: "Pro Tools",
+      subtitle: "Professional Suite",
+      description: "Access professional-grade tools for advanced image manipulation and generation workflows.",
+      buttonText: "Get Pro"
+    },
+
+    {
+      id: 5,
+      image: "/wan-bg.jpg",
+      title: "API Access",
+      subtitle: "Developer Tools",
+      description: "Integrate our powerful AI models into your applications with our comprehensive API.",
+      buttonText: "View Docs"
+    },
+
+    {
+      id: 6,
+      image: "/vr.jpg",
+      title: "Future Tech",
+      subtitle: "FLUX.2 Krea",
+      description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.",
+      buttonText: "Read More"
+    },
+
+    {
+      id: 7,
+      image: "/catalog_header.jpg",
+      title: "Green Tech",
+      subtitle: "Green Krea",
+      description: "We're making the weights for our FLUX.1 Krea model open-source. Download and run our model weights, read the technical report, or generate with it in Krea image.",
+      buttonText: "Read More"
+    }
   ];
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   const getNextSlide = () => slides[(currentSlide + 1) % slides.length];
+
+  // Swipe handlers
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: nextSlide,
+    onSwipedRight: prevSlide,
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
   const CardComponent = ({ slide }: { slide: typeof slides[number] }) => (
     <div className="relative rounded-xl overflow-hidden h-[400px] sm:h-[500px] md:h-[600px] w-full">
@@ -43,33 +107,30 @@ export default function Hero() {
   );
 
   return (
-    <div className="relative">
+    <div className="relative" {...swipeHandlers}>
       <div className="px-4 sm:px-6 py-6">
         <div className="flex gap-4 sm:gap-6 overflow-hidden flex-col md:flex-row">
-          {/* Main card */}
           <div className="md:w-[70%] w-full flex-shrink-0">
             <CardComponent slide={slides[currentSlide]} />
           </div>
 
-          {/* Next card preview - hidden on mobile */}
           <div className="md:w-[45%] w-full flex-shrink-0 hidden md:block">
             <CardComponent slide={getNextSlide()} />
           </div>
         </div>
       </div>
 
-      {/* Navigation dots */}
       <div className="flex justify-center mt-4 sm:mt-6 space-x-2">
         {slides.map((_, index) => (
-          <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-colors ${index === currentSlide ? 'bg-gray-800' : 'bg-gray-300'}`}/>
+          <button key={index} onClick={() => setCurrentSlide(index)} className={`w-2 h-2 rounded-full transition-colors ${index === currentSlide ? 'bg-gray-800' : 'bg-gray-300'}`} />
         ))}
       </div>
 
-      {/* Navigation arrows */}
-      <button onClick={prevSlide} className="absolute left-4 sm:left-8 bottom-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-10">
+      {/* Desktop arrows remain in the same position */}
+      <button onClick={prevSlide} className="absolute right-16 bottom-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-10">
         <ChevronLeft className="w-4 h-4 text-gray-600" />
       </button>
-      <button onClick={nextSlide} className="absolute right-4 sm:right-8 bottom-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-10">
+      <button onClick={nextSlide} className="absolute right-6 bottom-4 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors z-10">
         <ChevronRight className="w-4 h-4 text-gray-600" />
       </button>
     </div>
