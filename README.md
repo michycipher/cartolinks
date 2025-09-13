@@ -43,8 +43,8 @@ This project demonstrates proficiency in **modern frontend technologies**:
 
 ## 📂 Folder Structure
 
-├─ components/ # Reusable UI components
-├─ hooks/ # Custom React hooks
-├─ pages/ # Next.js page routes
-├─ public/ # Images and static assets
-├─ styles/ # Tailwind global styles & configuration
+- **├─ components/ # Reusable UI components
+- **├─ hooks/ # Custom React hooks
+- **├─ pages/ # Next.js page routes
+- **├─ public/ # Images and static assets
+- **├─ styles/ # Tailwind global styles & configuration
